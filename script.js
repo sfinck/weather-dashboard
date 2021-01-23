@@ -9,11 +9,10 @@ var input = '';
 function setup() {
     var button = $('#search');
     button.onclick(cityInput);
-    
-    input = $('#city')
 }
 function cityInput(){
     var url = api + input.value() + apiKey + units;
+    input = $('#city')
     loadJSON(url, gotData);
 }
 function gotData(data) {
