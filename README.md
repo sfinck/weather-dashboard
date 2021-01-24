@@ -5,7 +5,6 @@
 * [User Story](#story)
 * [Acceptance Criteria](#criteria)
 * [Usage](#usage)
-* [Installation](#installation)
 * [Deployed Link](#deployed)
 
 ## Description 
@@ -36,7 +35,8 @@ WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
 ## Usage
-![weather-dashboard-usage](assets/Screen Shot 2021-01-23 at 8.33.09 PM.png)
+![alt text](assets/screenshot.png)
 
 ## Deployed
+ https://sfinck.github.io/weather-dashboard/
 
