@@ -1,13 +1,22 @@
 # weather-dashboard
 
 ## Table of Contents 
-* [Description](#description)
+* [Installation](#installation)
 * [User Story](#story)
 * [Acceptance Criteria](#criteria)
 * [Usage](#usage)
 * [Deployed Link](#deployed)
 
-## Description 
+## Installation
+* Develop and design index.html page using a CSS framework 
+* In index.html include javascript and jQuery tags and link to style.css and javascript files
+* In javascript file use generated API key and call API key to get relative data
+* Select elements from the index.html and manipulate the DOM using a combination of jQuery and javascript
+* Input API information into elements by mapping their relative path 
+* Store information collected into the local storage. Information is based on user input. 
+* Get the information from local storage and display information from when page is loaded
+* When the search history is clicked on the left hand side of the page, call cityInput function to grab information again for respective city 
+
 
 ## Story
 
