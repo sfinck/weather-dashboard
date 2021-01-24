@@ -12,9 +12,9 @@
 
 <body>
     <div class="container">
-        <nav class="navbar navbar-light bg-light">
+        <nav class="navbar" id="nav">
             <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+                <span class="h3">Weather Dashboard</span>
             </div>
         </nav>
 
@@ -31,17 +31,18 @@
             <!--List of Cities-->
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card" id="recent-card">
                         <ul class="list-group list-group-flush" id="recent">
                         </ul>
                     </div>
                 </div>
 
                 <!--Current city card goes here-->
-                <div class="card col-md-8" id="current-city">
+                <div class="card col-md-7" id="current-city">
                     <div class="card-body">
-                        <h5 class="card-title" id="input">Current City <img src="assets/clear.jpeg" alt="weather-icon" id="icon" width="50" height="50"></h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="date">Date</h6>
+                        <h5 class="card-title" id="input">Current City</h5> 
+                        <img id="icon" style="border-radius: 5px;"/>
+                        <h6 class="card-subtitle mb-2 text-muted" id="date"><br>Date</h6>
                         <p class="card-text">Humidity: <span id="humidity"></span></p>
                         <p class="card-text">Wind Speed: <span id="speed"></span></p>
                         <p class="card-text">Temperature: <span id="temp"></span></p>
@@ -57,7 +58,7 @@
             <div class="row">
                 <!--Start Card-->
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="forecast-card">
                         <div class="card-header" id="mon">Day 1</div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Temp: <span id="mon-temp"></span></li>
@@ -68,7 +69,7 @@
                 <!--End Card-->
                 <!--Start Card-->
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="forecast-card">
                         <div class="card-header" id="tues">Day 2</div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Temp: <span id="tues-temp"></span></li>
@@ -79,7 +80,7 @@
                 <!--End Card-->
                 <!--Start Card-->
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="forecast-card">
                         <div class="card-header" id="weds">Day 3</div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Temp: <span id="weds-temp"></span></li>
@@ -90,7 +91,7 @@
                 <!--End Card-->
                 <!--Start Card-->
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="forecast-card">
                         <div class="card-header" id="thurs">Day 4</div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Temp: <span id="thurs-temp"></span></li>
@@ -101,7 +102,7 @@
                 <!--End Card-->
                 <!--Start Card-->
                 <div class="col-md-2">
-                    <div class="card">
+                    <div class="forecast-card">
                         <div class="card-header" id="fri">Day 5</div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Temp: <span id="fri-temp"></span></li>

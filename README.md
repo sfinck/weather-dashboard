@@ -1,6 +1,16 @@
 # weather-dashboard
 
-## User Story
+## Table of Contents 
+* [Description](#description)
+* [User Story](#story)
+* [Acceptance Criteria](#criteria)
+* [Usage](#usage)
+* [Installation](#installation)
+* [Deployed Link](#deployed)
+
+## Description 
+
+## Story
 
 ```
 AS A traveler
@@ -8,7 +18,7 @@ I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 ```
 
-## Acceptance Criteria
+## Criteria
 
 ```
 GIVEN a weather dashboard with form inputs
@@ -25,5 +35,8 @@ THEN I am again presented with current and future conditions for that city
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
 ```
+## Usage
+![weather-dashboard-usage](assets/Screen Shot 2021-01-23 at 8.33.09 PM.png)
 
+## Deployed
 

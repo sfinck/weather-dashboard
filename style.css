@@ -1,4 +1,24 @@
 #current-city {
     float: right;
+    border: black;
+    border-style: solid;
 }
 
+.forecast-card {
+    border: black;
+    border-style: solid;
+}
+
+.container {
+    background-image: url('Assets/background-image.jpg');
+    padding: 50px;
+}
+
+#nav {
+    background-color: transparent;
+    text-align: center;
+}
+
+body {
+    background-color: rgb(197, 178, 187) !important;
+}
