@@ -20,5 +20,5 @@
 }
 
 body {
-    background-color: rgb(197, 178, 187);
+    background-color: rgb(197, 178, 187) !important;
 }
