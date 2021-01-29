@@ -11,6 +11,16 @@ var input = '';
 //Local storage
 var cityArray = JSON.parse(window.localStorage.getItem("history")) || [];
 
+createButtons(cityArray)
+
+// when weather dashboard is open
+// presented with the last city searched
+//gives index of the last item in array 
+if (cityArray.length != 0) {
+    var lastCity = cityArray[cityArray.length - 1];
+    weatherData(lastCity);
+}
+
 function setup() {
     var button = $('#search');
     button.on("click", cityInput);
@@ -19,26 +29,46 @@ function setup() {
 // Name, date, icon rep of weather conditions (temp, humidity, wind speed, UV index
 function cityInput(event) {
     event.preventDefault(cityInput);
-    input = $('#city')
-    console.log(input.val());
+    input = $('#city').val();
 
-//Local Storage
-//Put cities in an array and get from local then append to empty boxes on the left
-// Call city input function
-if (cityArray.indexOf(input.val()) === -1){
-    cityArray.push(input.val());
-    localStorage.setItem("history", JSON.stringify(cityArray))
-
-    $("#recent").empty();
-
-        for (let i = 0; i < cityArray.length; i++) {
-            var recentSearch = $("#recent").addClass("list-group-item")
-            recentSearch.append("<button>" + cityArray[i] + "</button> <br>")
-        }
+    //Local Storage
+    //Put cities in an array and get from local then append to empty boxes on the left
+    // Call city input function
+    if (cityArray.indexOf(input) === -1) {
+        cityArray.push(input);
+        localStorage.setItem("history", JSON.stringify(cityArray))
+        createButtons(cityArray);
+    }
+    weatherData(input);
+    // UV index - changes color indicating favorable, moderate or severe
+    // var lat =  $('#input').text(res.coord.lat)
+    // var lon =  $('#input').text(res.coord.lon)
+    // var uvURL = uvAPI + lon + apiKey;
+    // $.ajax({
+    //     url: uvURL,
+    //     method: "GET"
+    // }).then(function (res) {
+    //     console.log(res)
+    //     $('#uv').text()
+    // })
 }
 
-//Current City
-    var currentURL = currentAPI + input.val() + apiKey + units;
+function createButtons(array) {
+    $("#recent").empty();
+
+    for (let i = 0; i < array.length; i++) {
+        var recentSearch = $("#recent").addClass("list-group-item")
+        recentSearch.append("<button id='cityButton'>" + array[i] + "</button> <br>")
+    }
+}
+
+function gotData(data) {
+    weather = data;
+}
+
+function weatherData(city) {
+    //Current City
+    var currentURL = currentAPI + city + apiKey + units;
     $.ajax({
         url: currentURL,
         method: "GET"
@@ -51,33 +81,14 @@ if (cityArray.indexOf(input.val()) === -1){
         $('#date').text(moment().format("MMM Do YY"));
         $('#icon').src(res.weather[0]);
     })
-
-    // UV index - changes color indicating favorable, moderate or severe
-    // var lat =  $('#input').text(res.coord.lat)
-    // var lon =  $('#input').text(res.coord.lon)
-    // var uvURL = uvAPI + lon + apiKey;
-    // $.ajax({
-    //     url: uvURL,
-    //     method: "GET"
-    // }).then(function (res) {
-    //     console.log(res)
-    //     $('#uv').text()
-    // })
-
     // View future weather conditions
     // 5-day forecast date, icon weather representation of conditions, temp and humidity
-    var weekURL = weekAPI + input.val() + apiKey + units;
+    var weekURL = weekAPI + city + apiKey + units;
     $.ajax({
         url: weekURL,
         method: "GET"
     }).then(function (res) {
         console.log(res)
-        //date
-        // $('#mon').text(res.list[0].dt)
-        // $('#tues').text(res.list[1].dt)
-        // $('#weds').text(res.list[13].dt)
-        // $('#thurs').text(res.list[17].dt)
-        // $('#fri').text(res.list[27].dt)
         //temp
         $('#mon-temp').text(res.list[0].main.temp)
         $('#tues-temp').text(res.list[1].main.temp)
@@ -91,18 +102,18 @@ if (cityArray.indexOf(input.val()) === -1){
         $('#thurs-humid').text(res.list[17].main.humidity)
         $('#fri-humid').text(res.list[27].main.humidity)
     })
-    // cityInput();
 }
-
-function gotData(data) {
-    weather = data;
-}
-setup();
-
 // click on a city on the left in the search history
 // then i am presented with the conditions for that city again
+$('#recent-card').on("click", "#cityButton", function (event) {
+    event.preventDefault();
+    input=$(this).text();
+    weatherData(input);
+})
+
+setup();
 
 
-// when weather dashboard is open
-// presented with the last city searched
+
+
 
