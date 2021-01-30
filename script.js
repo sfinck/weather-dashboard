@@ -30,16 +30,8 @@ function setup() {
 // Name, date, icon rep of weather conditions (temp, humidity, wind speed, UV index
 function cityInput(event) {
     event.preventDefault(cityInput);
-    input = $('#city').val();
+    input = $('#city').val().toLowerCase();
 
-    //Local Storage
-    //Put cities in an array and get from local then append to empty boxes on the left
-    // Call city input function
-    if (cityArray.indexOf(input) === -1) {
-        cityArray.push(input);
-        localStorage.setItem("history", JSON.stringify(cityArray))
-        createButtons(cityArray);
-    }
     weatherData(input);
 }
 
@@ -61,20 +53,28 @@ function weatherData(city) {
     var currentURL = currentAPI + city + apiKey + units;
     $.ajax({
         url: currentURL,
-        method: "GET" 
+        method: "GET"
     }).then(function (res) {
         console.log(res)
+        //Local Storage
+        //Put cities in an array and get from local then append to empty boxes on the left
+        // Call city input function
+        if (cityArray.indexOf(res.name) === -1) {
+            cityArray.push(res.name);
+            localStorage.setItem("history", JSON.stringify(cityArray))
+            createButtons(cityArray);
+        }
         $('#input').text(res.name)
         $('#humidity').text(res.main.humidity)
         $('#speed').text(res.wind.speed)
         $('#temp').text(res.main.temp)
         $('#date').text(moment().format("MMM Do YY"));
-        $('#icon').src(res.weather[0]);
+        $('#icon').attr("src", `http://openweathermap.org/img/wn/${res.weather[0].icon}@2x.png`)
         lat = res.coord.lat
         lon = res.coord.lon
         console.log(lat)
         console.log(lon)
- getUV(lat, lon);
+        getUV(lat, lon);
     })
     // View future weather conditions
     // 5-day forecast date, icon weather representation of conditions, temp and humidity
@@ -99,17 +99,17 @@ function weatherData(city) {
     })
 
 }
-function getUV (lat, lon){
-       //UV index
-       var uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}${apiKey}`
-       console.log(uvURL)
-       $.ajax({
-           url: uvURL,
-           method: "GET"
-       }).then(function (res) {
-           console.log(res)
-           $('#uv').text()
-       })
+function getUV(lat, lon) {
+    //UV index
+    var uvURL = `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}${apiKey}`
+    console.log(uvURL)
+    $.ajax({
+        url: uvURL,
+        method: "GET"
+    }).then(function (res) {
+        console.log(res)
+        $('#uv').text(res.value)
+    })
 }
 // click on a city on the left in the search history
 // then i am presented with the conditions for that city again
