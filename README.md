@@ -1,10 +1,4 @@
-# weather-dashboard
-
-   * List of technologies used
-   * 1-2 sentences explaining what the app is
-   * 2-3 Screenshots / gifs of the app
-   * License (usually MIT)
-   * Contact information for you and any collaborators
+# Weather-Dashboard
 
 ## Table of Contents 
 * [Overview](#overview)
